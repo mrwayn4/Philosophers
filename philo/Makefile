@@ -6,11 +6,11 @@
 #    By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 18:42:09 by ibouram           #+#    #+#              #
-#    Updated: 2024/08/09 09:56:03 by ibouram          ###   ########.fr        #
+#    Updated: 2024/08/13 10:38:29 by ibouram          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = philo.c philo_utils.c init.c
+SRC = philo.c philo_utils.c init.c time.c
 
 RM = rm -rf
 NAME = philo
