@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:29 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/09 11:37:08 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/08/13 10:07:18 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	pars_arg(char *str)
 {
-	if (!valid_arg(str) || ft_atoi(str) == -1)
+	if (!valid_arg(str) || ft_atoi(str) == -1 || ft_atoi(str) == 0)
 	{
 		ft_putstr_fd("Eroor: Invalid Input\n", 2);
 		return (1);
@@ -33,11 +33,8 @@ int	check_input(char **s)
 
 int	main(int ac, char **av)
 {
-	t_philo	*philo;
+	t_init	philo;
 
-	philo = malloc(sizeof(t_philo));
-	if (!philo)
-		return (1);
 	if (ac != 5 && ac != 6)
 	{
 		ft_putstr_fd("Error: Wrong number of arguments\n", 2);
@@ -45,6 +42,8 @@ int	main(int ac, char **av)
 	}
 	if (check_input(av) == 1)
 		return (1);
-	init_arg(av, philo);
+	init_arg(av, &philo);
+	init_forks(&philo);
+	init_philos(&philo);
 	return (0);
 }
