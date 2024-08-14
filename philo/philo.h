@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:33 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/13 12:31:26 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/08/14 14:33:20 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	size_t			last_meal;
 	int				nb_meals;
+	int				start_time;
 	pthread_mutex_t	*right_f;
 	pthread_mutex_t	*left_f;
 }					t_philo;
@@ -37,7 +38,6 @@ typedef struct s_init
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_time_eat;
-	int				start_time;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }					t_init;
