@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:33 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/09 11:36:57 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/08/13 12:31:26 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,38 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 typedef struct s_philo
+{
+	int				id;
+	pthread_t		thread;
+	size_t			last_meal;
+	int				nb_meals;
+	pthread_mutex_t	*right_f;
+	pthread_mutex_t	*left_f;
+}					t_philo;
+
+
+typedef struct s_init
 {
 	int				nb_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_time_eat;
-}					t_philo;
+	int				start_time;
+	pthread_mutex_t	*forks;
+	t_philo			*philos;
+}					t_init;
 
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strlen(char *s);
 int		valid_arg(char *s);
 int		ft_atoi(const char *str);
-void	init_arg(char **str, t_philo *philo);
+void	init_arg(char **str, t_init *philo);
+size_t	get_time(void);
+void	init_philos(t_init *data);
+void	init_forks(t_init *data);
 
 #endif
