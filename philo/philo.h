@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:33 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/14 14:33:20 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/08/16 17:14:29 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_init
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_time_eat;
+	pthread_mutex_t	write_lock;
+	pthread_mutex_t	dead_lock;
+	pthread_mutex_t	eat_lock;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }					t_init;
@@ -50,5 +53,7 @@ void	init_arg(char **str, t_init *philo);
 size_t	get_time(void);
 void	init_philos(t_init *data);
 void	init_forks(t_init *data);
+void init_data(char **str, t_init *data);
+void	*routine(void *philo);
 
 #endif
