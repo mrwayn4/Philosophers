@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 09:54:13 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/14 14:33:37 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/08/16 17:11:26 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	init_forks(t_init *data)
 	int	i;
 
 	i = 0;
+	pthread_mutex_init(&data->write_lock, NULL);
+	pthread_mutex_init(&data->dead_lock, NULL);
+	pthread_mutex_init(&data->eat_lock, NULL);
 	data->forks = malloc (sizeof(pthread_mutex_t) * (data->nb_philo));
 	if (!data->forks)
 		return ;
@@ -42,7 +45,6 @@ void	init_forks(t_init *data)
 void	init_philos(t_init *data)
 {
 	int	i;
-	int j;
 
 	i = 0;
 	data->philos = malloc (sizeof(pthread_mutex_t) * (data->nb_philo));
@@ -58,11 +60,11 @@ void	init_philos(t_init *data)
 		data->philos[i].right_f = &data->forks[i + 1 % data->nb_philo];
 		i++;
 	}
-	j = 0;
-	while (j < data->nb_philo)
-	{
-		// pthread_mutex_init(&data->philos[i], NULL);
-		// pthread_create(&data->philos[i].thread, NULL, routine, NULL);
-		j++;
-	}
+}
+
+void init_data(char **str, t_init *data)
+{
+	init_arg(str, data);
+	init_forks(data);
+	init_philos(data);
 }
