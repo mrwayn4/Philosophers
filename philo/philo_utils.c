@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:51:32 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/09 09:51:34 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/09/28 00:12:24 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ int	valid_arg(char *s)
 		s++;
 	}
 	return (1);
+}
+
+size_t	ft_usleep(size_t time)
+{
+	size_t	start;
+
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(200);
+	return (0);
 }

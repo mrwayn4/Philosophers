@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:33 by ibouram           #+#    #+#             */
-/*   Updated: 2024/08/16 17:14:29 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/09/30 23:46:35 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ typedef struct s_philo
 	pthread_t		thread;
 	size_t			last_meal;
 	int				nb_meals;
-	int				start_time;
+	int				eating;
 	pthread_mutex_t	*right_f;
 	pthread_mutex_t	*left_f;
+	int				*dead;
+	int				flg;
+	struct s_init	*data;
 }					t_philo;
-
 
 typedef struct s_init
 {
@@ -38,8 +40,10 @@ typedef struct s_init
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_time_eat;
-	pthread_mutex_t	write_lock;
-	pthread_mutex_t	dead_lock;
+	int				all_eat;
+	size_t			start_time;
+	pthread_mutex_t	print_lock;
+	pthread_mutex_t	time_lock;
 	pthread_mutex_t	eat_lock;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
@@ -53,7 +57,11 @@ void	init_arg(char **str, t_init *philo);
 size_t	get_time(void);
 void	init_philos(t_init *data);
 void	init_forks(t_init *data);
-void init_data(char **str, t_init *data);
-void	*routine(void *philo);
+void	init_data(char **str, t_init *data);
+void	*routine(t_philo *philos);
+size_t	ft_usleep(size_t time);
+void	destroy(t_init *data);
+void	monitor(t_init *data);
+void	print_message(t_philo *philo, char *msg);
 
 #endif
