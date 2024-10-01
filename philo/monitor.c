@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 01:39:42 by ibouram           #+#    #+#             */
-/*   Updated: 2024/10/01 00:13:19 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/01 03:51:39 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	destroy(t_init *data)
 
 	i = 0;
 	pthread_mutex_destroy(&data->print_lock);
+	pthread_mutex_destroy(&data->time_lock);
 	pthread_mutex_destroy(&data->eat_lock);
 	while (i < data->nb_philo)
 	{
@@ -56,7 +57,6 @@ int	death_checker(t_init *data, int i)
 		return (1);
 	}
 	pthread_mutex_unlock(&data->time_lock);
-	pthread_mutex_unlock(&data->print_lock);
 	return (0);
 }
 
