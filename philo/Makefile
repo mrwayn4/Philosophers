@@ -6,11 +6,10 @@
 #    By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 18:42:09 by ibouram           #+#    #+#              #
-#    Updated: 2024/10/01 03:51:53 by ibouram          ###   ########.fr        #
+#    Updated: 2024/10/02 00:38:10 by ibouram          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#./philo 3 200 200 250
 SRC = philo.c philo_utils.c init.c routine.c monitor.c
 
 RM = rm -rf

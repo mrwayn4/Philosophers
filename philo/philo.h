@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:33 by ibouram           #+#    #+#             */
-/*   Updated: 2024/10/01 00:06:17 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/02 00:07:40 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ typedef struct s_philo
 	pthread_t		thread;
 	size_t			last_meal;
 	int				nb_meals;
-	int				eating;
 	pthread_mutex_t	*right_f;
 	pthread_mutex_t	*left_f;
-	int				*dead;
 	int				flg;
 	struct s_init	*data;
 }					t_philo;

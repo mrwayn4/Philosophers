@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 09:54:13 by ibouram           #+#    #+#             */
-/*   Updated: 2024/09/30 23:41:53 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/02 00:43:09 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	init_philos(t_init *data)
 	{
 		data->philos[i].id = i + 1;
 		data->philos[i].nb_meals = 0;
-		data->philos[i].eating = 0;
 		data->all_eat = 0;
 		data->philos[i].last_meal = get_time();
 		data->philos[i].flg = 0;
