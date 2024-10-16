@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:29 by ibouram           #+#    #+#             */
-/*   Updated: 2024/10/02 00:37:53 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/16 18:37:39 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	main(int ac, char **av)
 	while (++i < philo.nb_philo)
 		pthread_create(&philo.philos[i].thread, NULL,
 			(void *)routine, &philo.philos[i]);
-	while (++j < philo.nb_philo)
-		pthread_detach(philo.philos[j].thread);
 	monitor(&philo);
+	while (++j < philo.nb_philo)
+		pthread_join(philo.philos[j].thread, NULL);
 	destroy(&philo);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:47:33 by ibouram           #+#    #+#             */
-/*   Updated: 2024/10/02 00:07:40 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/16 18:48:44 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 
 typedef struct s_init
 {
+	_Atomic int		d_flag;
 	int				nb_philo;
 	int				time_to_die;
 	int				time_to_eat;
@@ -57,7 +58,7 @@ void	init_philos(t_init *data);
 void	init_forks(t_init *data);
 void	init_data(char **str, t_init *data);
 void	*routine(t_philo *philos);
-size_t	ft_usleep(size_t time);
+size_t	ft_usleep(size_t time, t_init *data);
 void	destroy(t_init *data);
 void	monitor(t_init *data);
 void	print_message(t_philo *philo, char *msg);

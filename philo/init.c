@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 09:54:13 by ibouram           #+#    #+#             */
-/*   Updated: 2024/10/02 00:43:09 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/16 18:50:06 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_arg(char **str, t_init *data)
 		data->nb_time_eat = ft_atoi(str[5]);
 	else
 		data->nb_time_eat = -1;
+	data->d_flag = 0;
 }
 
 void	init_forks(t_init *data)

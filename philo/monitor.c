@@ -6,7 +6,7 @@
 /*   By: ibouram <ibouram@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 01:39:42 by ibouram           #+#    #+#             */
-/*   Updated: 2024/10/02 00:43:12 by ibouram          ###   ########.fr       */
+/*   Updated: 2024/10/16 18:51:34 by ibouram          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,25 @@ int	meals_checker(t_init *data, int i)
 	return (0);
 }
 
+void	print_death(t_philo *philo, char *msg)
+{
+	printf("%ld %d %s\n", get_time() - philo->data->start_time, philo->id, msg);
+}
+
 int	death_checker(t_init *data, int i)
 {
+	pthread_mutex_lock(&data->print_lock);
 	pthread_mutex_lock(&data->time_lock);
 	if (get_time() - data->philos[i].last_meal >= (size_t)data->time_to_die)
 	{
-		print_message(data->philos, "died");
+		data->philos[i].data->d_flag = 1;
+		print_death(data->philos, "died");
+		pthread_mutex_unlock(&data->print_lock);
 		pthread_mutex_unlock(&data->time_lock);
 		return (1);
 	}
 	pthread_mutex_unlock(&data->time_lock);
+	pthread_mutex_unlock(&data->print_lock);
 	return (0);
 }
 
